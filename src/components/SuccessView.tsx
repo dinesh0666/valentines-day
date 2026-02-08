@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import YouTubePlayer from './YouTubePlayer';
 
 const SuccessView: React.FC = () => {
     const [currentReasonIndex, setCurrentReasonIndex] = useState(0);
@@ -13,11 +14,11 @@ const SuccessView: React.FC = () => {
     ];
 
     const songs = [
-        { title: "Song 1", embedUrl: "https://www.youtube.com/embed/6B2jvf81LxE" },
-        { title: "Song 2", embedUrl: "https://www.youtube.com/embed/2g9zQp0jruM" },
-        { title: "Song 3", embedUrl: "https://www.youtube.com/embed/tHvkzclvfuY" },
-        { title: "Song 4", embedUrl: "https://www.youtube.com/embed/r3oAMDsC-8Y" },
-        { title: "Song 5", embedUrl: "https://www.youtube.com/embed/7TgSCEQYUpI" },
+        { title: "Dooron Dooron", artist: "Arijit Singh", youtubeId: "6B2jvf81LxE" },
+        { title: "Varoon", artist: "Prateek Kuhad", youtubeId: "2g9zQp0jruM" },
+        { title: "Dekha Hi Nahi", artist: "Vishal Mishra", youtubeId: "tHvkzclvfuY" },
+        { title: "Tum Hi Ho", artist: "Arijit Singh", youtubeId: "r3oAMDsC-8Y" },
+        { title: "Tera Ban Jaunga", artist: "Akhil Sachdeva", youtubeId: "7TgSCEQYUpI" },
     ];
 
     const handleNextReason = () => {
@@ -60,29 +61,7 @@ const SuccessView: React.FC = () => {
                 </button>
             </div>
 
-            <div className="w-full max-w-6xl">
-                <h3 className="text-white text-2xl font-bold mb-4 text-center">Soundtrack For You</h3>
-                <div className="flex gap-4 overflow-x-auto pb-4 soundtrack-scroll">
-                    {songs.map((song, index) => (
-                        <div
-                            key={index}
-                            className="bg-white/10 backdrop-blur-md rounded-xl p-4 min-w-[320px] flex-shrink-0"
-                        >
-                            <p className="text-white font-semibold text-lg mb-3 text-center">{song.title}</p>
-                            <iframe
-                                width="100%"
-                                height="80"
-                                src={song.embedUrl}
-                                title={song.title}
-                                frameBorder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowFullScreen
-                                className="rounded-lg"
-                            ></iframe>
-                        </div>
-                    ))}
-                </div>
-            </div>
+            <YouTubePlayer songs={songs} />
         </div>
     );
 };

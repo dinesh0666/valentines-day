@@ -44,11 +44,46 @@ npm run build
 
 ## Deploy to GitHub Pages
 
+### Automatic Deployment
+
+```bash
+./deploy.sh
+```
+
+Or manually:
+
 ```bash
 npm run deploy
 ```
 
-This will build the project and deploy it to GitHub Pages.
+### Manual Push to GitHub (if needed)
+
+If you need to push the code to GitHub first:
+
+```bash
+# Push to GitHub
+git push -u origin main
+
+# Then deploy to GitHub Pages
+npm run deploy
+```
+
+### Troubleshooting Network Issues
+
+If you encounter network connectivity issues:
+
+1. Check your internet connection
+2. Verify DNS settings (try `ping github.com`)
+3. Check if you're behind a proxy or firewall
+4. Try using a different network
+
+Once network is restored, run:
+```bash
+git push -u origin main
+npm run deploy
+```
+
+Your site will be available at: **https://dinesh0666.github.io/valentines-day/**
 
 ## Project Structure
 
