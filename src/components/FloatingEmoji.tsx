@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 interface FloatingEmojiProps {
     emoji: string;
@@ -6,32 +6,16 @@ interface FloatingEmojiProps {
 }
 
 const FloatingEmoji: React.FC<FloatingEmojiProps> = ({ emoji, delay }) => {
-    const [position, setPosition] = React.useState({
-        x: Math.random() * 100,
-        y: Math.random() * 100,
-    });
-
-    useEffect(() => {
-        const animationDuration = 15000 + Math.random() * 10000;
-
-        const animate = () => {
-            setPosition({
-                x: Math.random() * 100,
-                y: Math.random() * 100,
-            });
-        };
-
-        const interval = setInterval(animate, animationDuration);
-        return () => clearInterval(interval);
-    }, []);
+    const randomX = Math.random() * 100;
+    const randomDuration = 15 + Math.random() * 10;
 
     return (
         <div
-            className="absolute text-4xl opacity-30 pointer-events-none transition-all duration-[15000ms] ease-in-out"
+            className="absolute text-4xl opacity-30 pointer-events-none animate-float-vertical"
             style={{
-                left: `${position.x}%`,
-                top: `${position.y}%`,
+                left: `${randomX}%`,
                 animationDelay: `${delay}s`,
+                animationDuration: `${randomDuration}s`,
             }}
         >
             {emoji}
